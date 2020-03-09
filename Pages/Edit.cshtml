@@ -1,0 +1,28 @@
+﻿@page
+
+@model EditModel
+@{
+    ViewData["Title"] = "Enter a URL";
+}
+
+<style>
+
+    .deadcenter {
+        width: 600px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<script>$("#url").focus();</script>
+
+<div class="deadcenter">
+    <h3>@ViewData["Title"]</h3>
+    <form method="POST">
+        <div class="input-group input-group-lg">
+            <input type="text" asp-for="Address" id="url" asp-page-handler="Save" class="form-control" aria-label="Enter a URL..." aria-describedby="inputGroup-sizing-lg">
+        </div>
+    </form>
+</div>
