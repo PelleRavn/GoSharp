@@ -87,6 +87,8 @@ namespace GoSharp.Pages
                 }
 
                 link.Url = address;
+                link.UpdatedAt = DateTime.UtcNow;
+
                 db.SaveChanges();
 
                 Address = address;
