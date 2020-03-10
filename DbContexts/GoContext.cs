@@ -9,11 +9,10 @@ namespace GoSharp.DbContexts
     {
         public GoContext()
         {
-            Database.EnsureCreated();
-            //if(Database.GetPendingMigrations().Any())
-            //{
-            //    Database.Migrate();
-            //}
+            if (Database.GetPendingMigrations().Any())
+            {
+                Database.Migrate();
+            }
         }
 
         public DbSet<Link> Links { get; set; }
