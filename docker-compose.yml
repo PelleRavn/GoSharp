@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gosharp:
+    image: ${DOCKER_REGISTRY-}gosharp
+    build:
+      context: .
+      dockerfile: ./Dockerfile
