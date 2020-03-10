@@ -13,7 +13,7 @@ namespace GoSharp.Models
         [Required]
         public string Url { get; set; }
 
-        public long Visits { get; set; } = 0L;
+        public long VisitCount { get; set; } = 0L;
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

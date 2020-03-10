@@ -43,7 +43,7 @@ namespace GoSharp.Pages
                 return GoToEditPage(code);
             }
 
-            link.Visits++;
+            link.VisitCount++;
             db.SaveChanges();
 
             return Redirect(link.Url);
