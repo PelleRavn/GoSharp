@@ -25,4 +25,8 @@
             <input type="text" asp-for="Address" id="url" asp-page-handler="Save" class="form-control" aria-label="Enter a URL..." aria-describedby="inputGroup-sizing-lg">
         </div>
     </form>
+    @if (string.IsNullOrEmpty(Model.Address) == false)
+    {
+        <em>Try it out: <a href="/@Model.Code">@Model.Request.Host/@Model.Code</a></em>
+    }
 </div>

@@ -6,16 +6,19 @@ using GoSharp.DbContexts;
 using GoSharp.Models;
 using GoSharp.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace GoSharp.Pages
 {
-    public class EditModel : PageModel
+    public class EditModel : BasePageModel
     {
         private readonly ILogger<EditModel> _logger;
 
         public string Address { get; set; }
+        public string Code { get; set; }
 
         public EditModel(ILogger<EditModel> logger)
         {
@@ -30,7 +33,14 @@ namespace GoSharp.Pages
             }
 
             code = code.ToLower();
+            Initialize(code);
 
+            return Page();
+        }
+
+        private void Initialize(string code)
+        {
+            Code = code;
             using (var db = new GoContext())
             {
                 var link = db.Links.FirstOrDefault(f => f.Code.Equals(code));
@@ -39,8 +49,6 @@ namespace GoSharp.Pages
                     Address = link.Url;
                 }
             }
-
-            return Page();
         }
 
         public IActionResult OnPost(string code, string address)
@@ -50,17 +58,22 @@ namespace GoSharp.Pages
                 return Redirect("/");
             }
 
+            code = code.ToLower();
+
+            Initialize(code);
+
             if (string.IsNullOrEmpty(address))
             {
-                return Redirect($"/edit/{code}");
+                SetErrorMessage("You need to enter an address!");
+                return Page();
             }
 
             if (!UrlChecker.CheckUrl(address))
             {
-                return Redirect($"/edit/{code}");
-            }
+                SetErrorMessage("You need to enter an valid address!");
 
-            code = code.ToLower();
+                return Page();
+            }
 
             using (var db = new GoContext())
             {
@@ -77,6 +90,8 @@ namespace GoSharp.Pages
                 db.SaveChanges();
 
                 Address = address;
+
+                SetSuccessMessage("Your Go-link was saved.");
             }
 
             return Page();

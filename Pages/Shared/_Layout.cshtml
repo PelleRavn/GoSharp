@@ -10,6 +10,15 @@
 <body>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (@ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger" role="alert">@ViewData["ErrorMessage"].ToString()</div>
+            }
+
+            @if (@ViewData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success" role="alert">@ViewData["SuccessMessage"].ToString()</div>
+            }
             @RenderBody()
         </main>
     </div>
