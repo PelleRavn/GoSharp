@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using GoSharp.DbContexts;
 using GoSharp.Models;
 using GoSharp.Utils;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace GoSharp.Pages
@@ -30,6 +25,11 @@ namespace GoSharp.Pages
             if (string.IsNullOrEmpty(code))
             {
                 return Redirect("/");
+            }
+
+            if (code.Equals("links", StringComparison.OrdinalIgnoreCase))
+            {
+                return Redirect("/links");
             }
 
             code = code.ToLower();
@@ -58,6 +58,12 @@ namespace GoSharp.Pages
                 return Redirect("/");
             }
 
+            if (code.Equals("links", StringComparison.OrdinalIgnoreCase))
+            {
+                SetErrorMessage("Short address can't be 'links'. It is reserved!");
+                return Page();
+            }
+
             code = code.ToLower();
 
             Initialize(code);
@@ -70,7 +76,7 @@ namespace GoSharp.Pages
 
             if (!UrlChecker.CheckUrl(address))
             {
-                SetErrorMessage("You need to enter an valid address!");
+                SetErrorMessage("You need to enter a full valid address!");
 
                 return Page();
             }
@@ -93,7 +99,7 @@ namespace GoSharp.Pages
 
                 Address = address;
 
-                SetSuccessMessage("Your Go-link was saved.");
+                SetSuccessMessage("Your short link was saved.");
             }
 
             return Page();

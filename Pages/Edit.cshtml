@@ -2,31 +2,21 @@
 
 @model EditModel
 @{
-    ViewData["Title"] = "Enter a URL";
+    ViewData["Title"] = $"Where should {@Model.Request.Host}/{@Model.Code} go to?";
 }
 
-<style>
-
-    .deadcenter {
-        width: 600px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-</style>
-
-<script>$("#url").focus();</script>
-
 <div class="deadcenter">
-    <h3>@ViewData["Title"]</h3>
+    <h3>Enter a URL...</h3>
     <form method="POST">
-        <div class="input-group input-group-lg">
-            <input type="text" asp-for="Address" id="url" asp-page-handler="Save" class="form-control" aria-label="Enter a URL..." aria-describedby="inputGroup-sizing-lg">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">@Model.Request.Host/@Model.Code &rarr;</span>
+            </div>
+            <input type="text" asp-for="Address" asp-page-handler="Save" class="form-control" aria-label="Enter a URL..." aria-describedby="inputGroup-sizing-lg" autofocus>
         </div>
     </form>
     @if (string.IsNullOrEmpty(Model.Address) == false)
     {
-        <em>Try it out: <a href="/@Model.Code">@Model.Request.Host/@Model.Code</a></em>
+        <em>Try it out: <a href="/@Model.Code" target="_blank">@Model.Request.Host/@Model.Code</a></em>
     }
 </div>

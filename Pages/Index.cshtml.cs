@@ -21,7 +21,6 @@ namespace GoSharp.Pages
 
         public IActionResult OnGet(string code)
         {
-
             using (var db = new GoContext())
             {
                 if (string.IsNullOrEmpty(code))

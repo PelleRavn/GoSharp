@@ -8,11 +8,11 @@
 
 @foreach (var item in @Model.Links)
 {
-    <div class="card" style="margin-bottom: 10px;">
+    <div class="card margin-bottom">
         <div class="card-body">
-            <span class="badge badge-pill badge-secondary" style="float: right;">@item.VisitCount visit@(item.VisitCount != 1 ? "s" : "")</span>
-            <div style="font-size: 2em;"><a href="/edit/@item.Code">@item.Code</a></div>
-            <em>@item.Url</em>
+            <span class="badge badge-pill badge-secondary float-right">@item.VisitCount visit@(item.VisitCount != 1 ? "s" : "")</span>
+            <div class="link"><a href="/edit/@item.Code">@Model.Request.Host/@item.Code</a></div>
+            &rarr; <em>@item.Url</em>
         </div>
     </div>
 }

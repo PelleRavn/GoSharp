@@ -1,21 +1,23 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-/* Provide sufficient contrast against white background */
-a {
+﻿a {
     color: #0366d6;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
 html {
     font-size: 14px;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin: 20px;
+    margin-bottom: 60px;
+}
+
+.deadcenter {
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @media (min-width: 768px) {
@@ -24,32 +26,22 @@ html {
     }
 }
 
-.border-top {
-    border-top: 1px solid #e5e5e5;
+@media (max-width: 768px) {
+    .deadcenter {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
+.margin-bottom {
+    margin-bottom: 10px;
 }
 
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.float-right {
+    float: right;
 }
 
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    /* Margin bottom by footer height */
-    margin: 20px;
-    margin-bottom: 60px;
+.link {
+    font-size: 2em;
 }
