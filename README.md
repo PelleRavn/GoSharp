@@ -8,7 +8,7 @@ This is still work in progress, but should work just fine.
 
 To setup, you might need a combination of an A-record, and a local search domain to respond correctly. You could set it up to react to "go", and forward it to the service.
 
-You should properly research it some more yourself.
+You should probably research it some more yourself.
 
 # Usage
 
