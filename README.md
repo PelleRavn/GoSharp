@@ -14,6 +14,8 @@ You should probably research it some more yourself.
 
 Once you have set it up, you can add/edit a short URL with `go/edit/some-short-url`, or just go (pun intended) to `go/` and it will create a random address for you. If you go to an address that doesn't exist, it will ask where you want it to go. 
 
+![example](assets/example.png "Example")
+
 To be redirected to the URL, visit `go/some-short-url`.
 
 If you need to see all links created, and how many times they have been visited, see `go/links`.
@@ -24,4 +26,4 @@ To run inside of a Docker container, build it from `Dockerfile` (or `docker-comp
 
 Storage of saved links will, by default, be stored at `data`. This can be changed by setting the `DATA` environment variable, like `docker run -e DATA="/otherdatapath" gosharp`. Use this to mount a volume to persist the links.
 
-The container port is port `80`.
+The container port is `80`.
