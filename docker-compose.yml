@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY-}gosharp
     build:
       context: .
-      dockerfile: src/Dockerfile
+      dockerfile: Dockerfile
